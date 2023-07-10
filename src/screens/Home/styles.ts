@@ -38,7 +38,8 @@ export const styles = StyleSheet.create({
 
   movieList: {
     alignItems: 'center',
-    padding: 35,
+    padding: 25,
+    paddingTop: 5,
     paddingBottom: 100,
   },
 })
