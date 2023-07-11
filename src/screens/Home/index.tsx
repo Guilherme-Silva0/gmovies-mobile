@@ -47,12 +47,10 @@ export function Home() {
       },
     })
 
-    console.log('eita')
-
-    if (response.data.results.length === 0) return
+    setIsLoading(false)
+    if (response.data.results.length === 0) return []
 
     setFilteredMovies(response.data.results)
-    setIsLoading(false)
   }
 
   const handleSearch = (text: string) => {
@@ -70,6 +68,8 @@ export function Home() {
     () => (search.length > 2 ? filteredMovies : discoveryMovies),
     [search.length, filteredMovies, discoveryMovies],
   )
+
+  const noResults = useMemo(() => movieData?.length === 0, [movieData?.length])
 
   useEffect(() => {
     loadMoreData()
@@ -90,6 +90,9 @@ export function Home() {
           />
           <MagnifyingGlass color="#fff" size={25} weight="light" />
         </View>
+        {noResults && !isLoading && (
+          <Text style={styles.noResults}>Nenhum filme foi encontrado!</Text>
+        )}
       </View>
       <View>
         <FlatList

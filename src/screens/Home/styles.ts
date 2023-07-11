@@ -42,4 +42,10 @@ export const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 100,
   },
+
+  noResults: {
+    color: '#efefef',
+    textAlign: 'center',
+    fontSize: 18,
+  },
 })
